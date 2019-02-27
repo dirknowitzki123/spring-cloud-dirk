@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cloud.frame.parent</groupId>
+        <artifactId>frame-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>frame-core</artifactId>
+    <name>frame-core</name>
+    <description>SpringCloud基础框架核心组件</description>
+
+
+    <!--<distributionManagement>
+      <repository>
+          <id>deployment-release</id>
+          <url>http://118.31.186.204:8081/nexus/content/repositories/bycxrelease/</url>
+      </repository>
+      <snapshotRepository>
+          <id>deployment-snapshot</id>
+          <url>http://118.31.186.204:8081/nexus/content/repositories/bycxsnap/</url>
+      </snapshotRepository>
+    </distributionManagement>-->
+
+    <dependencies>
+        <!-- SpringCloud 依赖  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+        </dependency>
+          <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 组件依赖 -->
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-auth</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 集成Activemq -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
+
+        <!-- 集成Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>1.1.1.RELEASE</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!--<dependency>
+                <groupId>framework-kafka</groupId>
+                <artifactId>framework-kafka</artifactId>
+                <version>1.1.4</version>
+      </dependency>-->
+    </dependencies>
+
+</project>

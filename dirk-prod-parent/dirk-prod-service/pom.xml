@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dirk-prod-parent</artifactId>
+        <groupId>com.dirk</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dirk-prod-service</artifactId>
+    <name>dirk-prod-service</name>
+    <description>微服务service层</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dirk</groupId>
+            <artifactId>dirk-prod-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

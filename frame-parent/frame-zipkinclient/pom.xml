@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cloud.frame.parent</groupId>
+    <artifactId>frame-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>frame-zipkinclient</artifactId>
+  <description>SpringCloud基础框架之路由跟踪组件</description>
+  
+  <distributionManagement>
+		<repository>
+			<id>deployment-release</id>
+			<url>http://118.31.186.204:8081/nexus/content/repositories/bycxrelease/</url>
+		</repository>
+		<snapshotRepository>
+			<id>deployment-snapshot</id>
+			<url>http://118.31.186.204:8081/nexus/content/repositories/bycxsnap/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<!--路由跟踪配置  -->
+		<!--<dependency>
+	    	<groupId>org.springframework.cloud</groupId>  
+	    	<artifactId>spring-cloud-starter-stream-kafka</artifactId>  
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
+	    </dependency>      
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>-->
+		
+	</dependencies>
+</project>

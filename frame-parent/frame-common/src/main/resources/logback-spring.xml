@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+    <contextName>logback</contextName>
+    <jmxConfigurator/>
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <!-- 输出到控制台 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger] [%-5level] - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 输出到日志文件  -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/${springAppName:-}/application.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}] [%logger] [%-5level] - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/data/logs/${springAppName:-}/application.%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 50MB, keep 20 days worth of history -->
+            <maxFileSize>4GB</maxFileSize>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- busiOperaLogger文件  -->
+    <appender name="busiOperaLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/${springAppName:-}/busiOperaLogger.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]|[${springAppName:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}]|[%logger]|[%-5level]|%msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/data/logs/${springAppName:-}/busiOperaLogger.%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 50MB, keep 20 days worth of history -->
+            <maxFileSize>4GB</maxFileSize>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- errorLogger文件  -->
+    <appender name="errorLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/${springAppName:-}/errorLogger.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]|[${springAppName:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}]|[%logger]|[%-5level]|%msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/data/logs/${springAppName:-}/errorLogger.%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 50MB, keep 20 days worth of history -->
+            <maxFileSize>4GB</maxFileSize>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+
+    <!-- thirdPartyServiceLogger文件  -->
+    <appender name="thirdPartyServiceLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/${springAppName:-}/thirdPartyServiceLogger.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]|[${springAppName:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}]|[%logger]|[%-5level]|%msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/data/logs/${springAppName:-}/thirdPartyServiceLogger.%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 50MB, keep 20 days worth of history -->
+            <maxFileSize>4GB</maxFileSize>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- fundCustomLogger文件  -->
+    <appender name="fundCustomLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/data/logs/${springAppName:-}/fundCustomLogger.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}]|[${springAppName:-}|%X{X-B3-TraceId:-}|%X{X-B3-SpanId:-}|%X{X-Span-Export:-}]|[%logger]|[%-5level]|%msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>/data/logs/${springAppName:-}/fundCustomLogger.%d{yyyyMMdd}.%i.log</fileNamePattern>
+            <!-- each file should be at most 50MB, keep 20 days worth of history -->
+            <maxFileSize>4GB</maxFileSize>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <appender name="async_file" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志-->
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <neverBlock>true</neverBlock>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="file"/>
+    </appender>
+
+    <appender name="async_busiOperaLogger" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="busiOperaLogger"/>
+    </appender>
+
+    <appender name="async_errorLogger" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="errorLogger"/>
+    </appender>
+
+    <appender name="async_thirdPartyServiceLogger" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="thirdPartyServiceLogger"/>
+    </appender>
+
+    <appender name="async_fundCustomLogger" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <queueSize>512</queueSize>
+        <neverBlock>true</neverBlock>
+        <appender-ref ref="fundCustomLogger"/>
+    </appender>
+
+    <!--配置logger  -->
+    <logger name="org.hibernate.validator" level="ERROR"></logger>
+    <logger name="org.springframework" level="ERROR"></logger>
+    <logger name="org.springframework.web" level="ERROR"></logger>
+    <logger name="org.mybatis.spring.mapper.ClassPathMapperScanner" level="ERROR"></logger>
+    <logger name="org.mybatis.spring.SqlSessionFactoryBean" level="ERROR"></logger>
+
+    <logger name="org.apache" level="ERROR"></logger>
+    <logger name="org.apache.ibatis" level="ERROR"></logger>
+    <logger name="org.apache.shiro" level="ERROR"></logger>
+    <logger name="com.atomikos" level="ERROR"></logger>
+    <logger name="com.alibaba.druid" level="ERROR"></logger>
+    <logger name="java.sql" level="ERROR"></logger>
+    <logger name="java.sql.Connection" level="ERROR"></logger>
+    <logger name="java.sql.Statement" level="ERROR"></logger>
+    <logger name="java.sql.PreparedStatement" level="ERROR"></logger>
+    <logger name="java.sql.ResultSet" level="ERROR"></logger>
+    <logger name="com.alex" level="ERROR"></logger>
+    <logger name="com.netflix" level="ERROR"></logger>
+    <logger name="com.by" level="ERROR"></logger>
+
+    <logger name="busiOperaLogger" level="INFO" additivity="true">
+        <appender-ref ref="async_busiOperaLogger"/>
+    </logger>
+    <logger name="errorLogger" level="INFO" additivity="true">
+        <appender-ref ref="async_errorLogger" />
+    </logger>
+    <logger name="thirdPartyServiceLogger" level="INFO" additivity="true">
+        <appender-ref ref="async_thirdPartyServiceLogger" />
+    </logger>
+
+    <logger name="fundCustomLogger" level="INFO" additivity="true">
+        <appender-ref ref="async_fundCustomLogger"/>
+    </logger>
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+        <!--系统应用日志  -->
+        <logger name="com.cloud" level="DEBUG"></logger>
+        <logger name="com.bycx" level="DEBUG"></logger>
+        <!-- 根logger -->
+        <root level="INFO">
+            <appender-ref ref="stdout" />
+            <appender-ref ref="async_file" />
+        </root>
+    </springProfile>
+
+    <!-- 测试环境 -->
+    <springProfile name="test">
+        <logger name="com.cloud" level="DEBUG"></logger>
+        <logger name="com.bycx" level="DEBUG"></logger>
+        <!-- 根logger -->
+        <root level="INFO">
+            <appender-ref ref="async_file" />
+        </root>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <logger name="com.cloud" level="INFO"></logger>
+        <logger name="com.bycx" level="INFO"></logger>
+        <!-- 根logger -->
+        <root level="INFO">
+            <appender-ref ref="async_file" />
+        </root>
+    </springProfile>
+</configuration>

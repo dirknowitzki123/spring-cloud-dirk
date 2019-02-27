@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: dirk-api-gateway
+  profiles:
+    active: dev
+
+server:
+  port: 8730
+
+
+#ע����������
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cloud.frame.parent</groupId>
+        <artifactId>frame-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>frame-auth</artifactId>
+    <name>frame-auth</name>
+    <description>SpringCloud基础框架之权限认证组件</description>
+
+    <!--<distributionManagement>
+        <repository>
+            <id>deployment-release</id>
+            <url>http://118.31.186.204:8081/nexus/content/repositories/bycxrelease/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deployment-snapshot</id>
+            <url>http://118.31.186.204:8081/nexus/content/repositories/bycxsnap/</url>
+        </snapshotRepository>
+    </distributionManagement>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cloud.frame.parent</groupId>
+            <artifactId>frame-cache</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.zuul</groupId>
+            <artifactId>zuul-core</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

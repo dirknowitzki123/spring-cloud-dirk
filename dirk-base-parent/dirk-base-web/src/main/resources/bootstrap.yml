@@ -1,0 +1,21 @@
+############# 开发环境配置 #################
+server:
+  port: 8080
+spring:
+  application:
+    name: dirk-base-service
+  profiles:
+    active: dev
+  cloud:
+      config:
+        discovery:
+          enabled: true
+          service-id: config-server
+        name: dirk-base-service
+        profile: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      #defaultZone: http://${spring.cloud.client.hostname}:8761/eureka/

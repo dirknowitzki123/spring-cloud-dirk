@@ -1,0 +1,4 @@
+com\cloud\frame\core\base\web\BaseController.class
+com\cloud\frame\core\base\service\IService.class
+com\cloud\frame\core\base\service\BaseService.class
+com\cloud\frame\core\base\service\IBaseService.class
